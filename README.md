@@ -20,5 +20,9 @@ This assumes that the server exposes a callback API at the usual path, namely:
 If this is not the case, an alternative URL can be supplied as the only
 parameter when initialising ShoutcastStatus:
 
-    url = "http://example.com/path/to/punkrock/streaminfo"
-    sc  = ShoutcastStatus.new(url)
+    sc  = ShoutcastStatus.new("http://example.com/path/to/punkrock/streaminfo")
+
+Dependencies
+------------
+
+[Johnson](http://github.com/jbarnette/johnson) is used to interpret the JavaScript sent by the server.
