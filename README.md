@@ -18,9 +18,14 @@ This assumes that the server exposes a callback API at the usual path, namely:
     http://example.com/cast/js.php/punkrock/streaminfo
 
 If this is not the case, an alternative URL can be supplied as the only
-parameter when initialising ShoutcastStatus:
+parameter when initialising ShoutcastStatus; this can be either the `tunein.php`
+URL:
 
-    sc  = ShoutcastStatus.new("http://example.com/path/to/punkrock/streaminfo")
+    sc = ShoutcastStatus.new("http://example.com/somewhere/tunein.php/punkrock/playlist.pls")
+
+or an explicit path to the callback API:
+
+    s  = ShoutcastStatus.new("http://example.com/path/to/punkrock/streaminfo")
 
 Dependencies
 ------------

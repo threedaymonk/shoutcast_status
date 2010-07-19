@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name    = "shoutcast_status"
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.authors       = ["Paul Battley"]
   s.email         = "pbattley@gmail.com"

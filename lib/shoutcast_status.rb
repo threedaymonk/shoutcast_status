@@ -2,7 +2,8 @@ require "open-uri"
 require "johnson"
 
 class ShoutcastStatus
-  DEFAULT_INFO_URL = "http://%s/cast/js.php/%s/streaminfo"
+  DEFAULT_ENDPOINT  = "http://%s/cast/"
+  DEFAULT_INFO_PATH = "js.php/%s/streaminfo"
 
   DUMMY_CALLBACK = <<-END
     function cc_streaminfo_get_callback(details){
@@ -12,12 +13,15 @@ class ShoutcastStatus
 
   # Create a ShoutcastStatus instance for a given station.
   # If one parameter is given, it is taken as the url to the now playing JSONP
-  # callback. If two parameters are given, they are interpreted as the station
-  # host and station name; the information URL will be inferred from this.
+  # callback or the playlist. If two parameters are given, they are interpreted
+  # as the station host and station name; the information URL will be inferred
+  # from this.
   #
   def initialize(url_or_host, station=nil)
     if station
-      @info_url = DEFAULT_INFO_URL % [url_or_host, station]
+      @info_url = (DEFAULT_ENDPOINT % url_or_host) + (DEFAULT_INFO_PATH % station)
+    elsif m = url_or_host.match(%r{^(.*?/)tunein.php/([^/]+)/playlist.pls$})
+      @info_url = m[1] + (DEFAULT_INFO_PATH % m[2])
     else
       @info_url = url_or_host
     end

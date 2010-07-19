@@ -15,6 +15,15 @@ class ShoutcastStatusTest < Test::Unit::TestCase
     sc.stream_info
   end
 
+  def test_should_convert_tunein_url_to_status_url
+    io = StringIO.new("cc_streaminfo_get_callback({});")
+    sc = ShoutcastStatus.new("http://example.com/arbitrary/location/tunein.php/punkrock/playlist.pls")
+    sc.expects(:open).
+       with("http://example.com/arbitrary/location/js.php/punkrock/streaminfo").
+       yields(io)
+    sc.stream_info
+  end
+
   def test_should_use_url_as_supplied
     io = StringIO.new("cc_streaminfo_get_callback({});")
     sc = ShoutcastStatus.new("http://example.com/some/path")
