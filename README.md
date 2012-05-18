@@ -30,4 +30,5 @@ or an explicit path to the callback API:
 Dependencies
 ------------
 
-[Johnson](http://github.com/jbarnette/johnson) is used to interpret the JavaScript sent by the server.
+[therubyracer](https://github.com/cowboyd/therubyracer) is used to interpret
+the JavaScript sent by the server.
