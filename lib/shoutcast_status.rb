@@ -1,5 +1,5 @@
 require "open-uri"
-require "johnson"
+require "v8"
 
 class ShoutcastStatus
   DEFAULT_ENDPOINT  = "http://%s/cast/"
@@ -32,7 +32,7 @@ class ShoutcastStatus
   def stream_info
     open @info_url do |f|
       js = f.read
-      return StreamInfo.new(Johnson.evaluate(DUMMY_CALLBACK + js))
+      return StreamInfo.new(V8::Context.new.eval(DUMMY_CALLBACK + js))
     end
   end
 
