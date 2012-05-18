@@ -11,6 +11,6 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.summary       = "Get station info from a Shoutcast server"
 
-  s.add_dependency "johnson"
+  s.add_dependency "therubyracer"
   s.add_development_dependency "mocha"
 end
